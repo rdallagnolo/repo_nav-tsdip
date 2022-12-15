@@ -13,7 +13,7 @@ import streamlit as st
 
 ##### HANDLING THE DATA
 
-target = 'TSDip-1.txt'
+target = 'TSDip-4.txt'
 
 df = pd.read_csv(f"/home/rod/Documents/DataScience/my_projects/nav/tsdip/data/{target}",sep="\t")    # reading the file
 df.drop(['SS','FileName','Ser','Meas ','Sal. ','Cond. ','Temp ',' %O2 ','mg/l'],axis=1,inplace=True) # droping unused columns
