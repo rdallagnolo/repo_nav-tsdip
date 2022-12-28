@@ -15,7 +15,7 @@ import streamlit as st
 
 target = 'TSDip-2.txt'
 
-df = pd.read_csv(f"/home/rod/Documents/DataScience/my_projects/nav/tsdip/data/{target}",sep="\t")    # reading the file
+df = pd.read_csv(f"/home/rod/Documents/DataScience/my_projects/tsdip/data/{target}",sep="\t")    # reading the file
 df.drop(['SS','FileName','Ser','Meas ','Sal. ','Cond. ','Temp ',' %O2 ','mg/l'],axis=1,inplace=True) # droping unused columns
 df.columns=['SoS','Depth','year','month','day','hour','minute','second']                             # renaming columns
 df = df[df['Depth']>2.0]                                                                             # keep only  depths above 2.0 meters

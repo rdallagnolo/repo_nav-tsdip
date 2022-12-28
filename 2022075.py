@@ -15,8 +15,8 @@ if new_dip == True:
 
     # defining source and destination
     # paths
-    src = '/home/rod/Documents/DataScience/my_projects/nav/tsdip/data/'
-    trg = '/home/rod/Documents/DataScience/my_projects/nav/tsdip/pages/'
+    src = '/home/rod/Documents/DataScience/my_projects/tsdip/data/'
+    trg = '/home/rod/Documents/DataScience/my_projects/tsdip/pages/'
 
     # list of files in the data and page folder
     data_files = os.listdir(src)
@@ -54,10 +54,10 @@ if new_dip == True:
         #### replacing file contents with template
         from shutil import copyfile
 
-        source = '/home/rod/Documents/DataScience/my_projects/nav/tsdip/code_template.py'
+        source = '/home/rod/Documents/DataScience/my_projects/tsdip/code_template.py'
         
         for fname in new_dips_text:
-            copyfile(source,f'/home/rod/Documents/DataScience/my_projects/nav/tsdip/pages/{fname}')
+            copyfile(source,f'/home/rod/Documents/DataScience/my_projects/tsdip/pages/{fname}')
 
         ## adding file name as target
 
