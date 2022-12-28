@@ -24,10 +24,14 @@ tsdip
 
 Under the main project folder, here named `tsdip`, two python files are saved:
 
+> **Note**
 > tsdip_app.py: the main code file that will be run by `streamlit run`
 
+> **Note**
 > code_template.py: used by the main code file containing the code for dataframe manipulation and graphs contructions 
 
+> **Note**
 > data: is a folder where the `TSDip-n.txt`files have to be saved
 
+> **Note**
 > pages: is a folder where the streamlit pages will be stored
