@@ -1,10 +1,8 @@
 import os
 import streamlit as st
+st.set_page_config(layout="wide")
 
-st.header("All profiles")
-
-new_dip = st.button("add new dip")
-
+new_dip = st.sidebar.button("add new dip")
 
 if new_dip == True:
 
@@ -12,7 +10,7 @@ if new_dip == True:
     from pathlib import Path
     import shutil
     import os
-
+    
     # defining source and destination
     # paths
     src = '/home/rod/Documents/DataScience/my_projects/tsdip/data/'
@@ -98,13 +96,73 @@ if new_dip == True:
         
         
         ##### ​change the file name
-        from pathlib import Path
-
         path = Path(trg)
 
         for f in path.iterdir():
             if f.is_file() and f.suffix in ['.txt']:
                 f.rename(f.with_suffix('.py'))
     
+        
     else:
-        st.write("nothing new to plot")
+        st.sidebar.write("nothing new to plot")
+
+
+#### creating all profiles graph
+from pathlib import Path
+import pandas as pd
+import plotly.graph_objects as go
+import plotly.express as px
+
+f = Path('/home/rod/Documents/DataScience/my_projects/tsdip/home_files')
+
+if len(os.listdir(f)) == 0:
+    print(" ")
+else:
+    
+    fig1 = go.Figure()
+
+    for csv in f.glob("*.csv"):
+        fig1.add_traces(
+            px.line(pd.read_csv(csv), x="SoS", y="Depth")
+            .update_traces(line_color=None, showlegend=True, name=csv.name[0:7])
+            .data
+        )
+        
+    fig1.update_yaxes(autorange="reversed")
+
+    fig1.update_layout(
+        xaxis={'side':'top'},
+        xaxis_title="Speed of sound (m/s)",
+        yaxis_title="Depth (m)",
+        template='ggplot2',
+        height=800,
+        width=600)
+
+    # survey polygon
+    df = pd.read_csv(f"/home/rod/Documents/DataScience/my_projects/tsdip/survey_polygon.txt",sep="\t")
+    fig2 = go.Figure()
+
+    fig2.add_trace(go.Scatter(x=df['Easting'], y=df['Northing'],
+                        mode='lines',
+                        name='Survey Polygon'))
+    fig2.update_layout(
+        xaxis_title="Easting (m)",
+        yaxis_title="Northing (m)",
+        legend_title="Dips",
+        height=800,
+        width=600,
+        template='plotly_white')
+
+
+    col1, col2 = st.columns(2)
+
+    with col1:
+        st.text('All profiles')
+        st.plotly_chart(fig1)
+    
+    with col2:
+        st.text('Survey polygon')
+        st.plotly_chart(fig2)
+        
+
+        

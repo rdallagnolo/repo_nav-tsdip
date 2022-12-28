@@ -12,7 +12,7 @@ import streamlit as st
 
 ##### HANDLING THE DATA
 
-target = 'TSDip-5.txt'
+target = 'TSDip-7.txt'
 
 df = pd.read_csv(f"/home/rod/Documents/DataScience/my_projects/tsdip/data/{target}",sep="\t")    # reading the file
 
