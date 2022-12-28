@@ -9,7 +9,18 @@ Sound velocity profiles have to be exported in the MiniSoft SD200W software as a
 > **Warning**
 > Replace the `.prn` with a `txt`.  
 
-## File structure
+
+## Requisites
+
+The app was build with python 3.9.13 and the following libraries:
+
+```
+numpy==1.12.5
+plotly==5.9.0
+streamlit==1.16.0
+```
+
+## Project directory structure
 
 The following file structure and naming convention have to be used in order to get the dashboard to work:
 
@@ -35,3 +46,9 @@ Under the main project folder, here named `tsdip`, two python files are saved:
 
 > **Note**
 > pages: is a folder where the streamlit pages will be stored
+
+## Running the app
+
+Change directory to the project folder, activate the environment where the libraries are installed and run:
+
+`streamlit run tsdip_app.py`
