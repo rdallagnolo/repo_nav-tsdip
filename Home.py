@@ -13,8 +13,8 @@ if new_dip == True:
     
     # defining source and destination
     # paths
-    src = '/home/rod/Documents/DataScience/my_projects/tsdip/data/'
-    trg = '/home/rod/Documents/DataScience/my_projects/tsdip/pages/'
+    src = '/home/rod/Documents/DataScience/repo_nav-tsdip/data/'
+    trg = '/home/rod/Documents/DataScience/repo_nav-tsdip/pages/'
 
     # list of files in the data and page folder
     data_files = os.listdir(src)
@@ -52,10 +52,10 @@ if new_dip == True:
         #### replacing file contents with template
         from shutil import copyfile
 
-        source = '/home/rod/Documents/DataScience/my_projects/tsdip/code_template.py'
+        source = '/home/rod/Documents/DataScience/repo_nav-tsdip/code_template.py'
         
         for fname in new_dips_text:
-            copyfile(source,f'/home/rod/Documents/DataScience/my_projects/tsdip/pages/{fname}')
+            copyfile(source,f'/home/rod/Documents/DataScience/repo_nav-tsdip/pages/{fname}')
 
         ## adding file name as target
 
@@ -113,7 +113,7 @@ import pandas as pd
 import plotly.graph_objects as go
 import plotly.express as px
 
-f = Path('/home/rod/Documents/DataScience/my_projects/tsdip/home_files')
+f = Path('/home/rod/Documents/DataScience/repo_nav-tsdip/home_files')
 
 if len(os.listdir(f)) == 0:
     print(" ")
@@ -139,7 +139,7 @@ else:
         width=600)
 
     # survey polygon
-    df = pd.read_csv(f"/home/rod/Documents/DataScience/my_projects/tsdip/survey_polygon.txt",sep="\t")
+    df = pd.read_csv(f"/home/rod/Documents/DataScience/repo_nav-tsdip/survey_polygon.txt",sep="\t")
     fig2 = go.Figure()
 
     fig2.add_trace(go.Scatter(x=df['Easting'], y=df['Northing'],
@@ -162,7 +162,19 @@ else:
     
     with col2:
         st.text('Survey polygon')
+        dips_on = st.button('dips on')
         st.plotly_chart(fig2)
         
 
-        
+import csv
+
+dip_number = st.sidebar.text_input("TSDip number: ")
+easting = st.sidebar.text_input("Easting")
+northing = st.sidebar.text_input("Northing")
+
+if st.sidebar.button("Add location"):
+    fields = [dip_number, easting, northing]
+ 
+    with open('locations.csv','a', newline='') as f:
+        writer = csv.writer(f)
+        writer.writerow(fields)        

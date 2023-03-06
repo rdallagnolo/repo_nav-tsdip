@@ -14,7 +14,7 @@ import streamlit as st
 
 target = 'target-name'
 
-df = pd.read_csv(f"/home/rod/Documents/DataScience/my_projects/tsdip/data/{target}",sep="\t")    # reading the file
+df = pd.read_csv(f"/home/rod/Documents/DataScience/repo_nav-tsdip/data/{target}",sep="\t")    # reading the file
 
 ### Cleaning up and refactoring column names
 
@@ -60,7 +60,7 @@ df_up=df[df['direction']=='up']
 df_down=df[df['direction']=='down']
 
 ### exporting the downwards profile to be compiled in the home page - all profiles
-df_down[['SoS','Depth']].to_csv(f"/home/rod/Documents/DataScience/my_projects/tsdip/home_files/{target[0:7]}.csv")
+df_down[['SoS','Depth']].to_csv(f"/home/rod/Documents/DataScience/repo_nav-tsdip/home_files/{target[0:7]}.csv")
 
 # top 50m dataframe in each direction
 top = df[df['Depth']<=50] 

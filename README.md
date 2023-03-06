@@ -26,7 +26,7 @@ The following file structure and naming convention have to be used in order to g
 
 ```
 tsdip
-    |   tsdip_app.py
+    |   Home.py
     |   code_template.py
 └───data
 └───pages
@@ -36,7 +36,7 @@ tsdip
 Under the main project folder, here named `tsdip`, two python files are saved:
 
 > **Note**
-> tsdip_app.py: the main code file that will be run by `streamlit run`
+> Home.py: the main code file that will be run by `streamlit run`
 
 > **Note**
 > code_template.py: used by the main code file containing the code for dataframe manipulation and graphs contructions 
@@ -51,4 +51,4 @@ Under the main project folder, here named `tsdip`, two python files are saved:
 
 Change directory to the project folder, activate the environment where the libraries are installed and run:
 
-`streamlit run tsdip_app.py`
+`streamlit run Home.py`
